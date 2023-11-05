@@ -115,7 +115,7 @@ function demo()
     	p = rand(Bool,t)
         print(white(),"f( ", red(), str(p,""), white()," ) = ")
         c  = encrypt(p,k)
-        print(yellow(),str(c,""), "    ")
+        print(yellow(),str(c,""), "  ")
         e = p .== c
         print(gray(100),str(e,""), " \n")
         d  = decrypt(c,k)
