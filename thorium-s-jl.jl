@@ -1,21 +1,42 @@
 using LinearAlgebra
 using Printf
 
-str(v,s)  = join(map(i -> i ? "|"*s : "0"*s , v))
+function str(v,s)
+    join(map(i -> i ? "|"*s : "0"*s , v))
+end
 
-print_vec(v) = print(str(v,""),"\n")
-key(n) = rand(Bool,n,n)
+function key(n)
+    rand(Bool,n,n)
+end
 
-spin_row(k,i) = circshift(k[i,:], k[i,i]  + 1)
-spin_col(k,i) = circshift(k[:,i], k[i,i]  + 1)
+function spin_row(k,i)
+    circshift(k[i,:], k[i,i]  + 1)
+end
 
-rgb(r,g,b) =  "\e[38;2;$(r);$(g);$(b)m"
+function spin_col(k,i)
+    circshift(k[:,i], k[i,i]  + 1)
+end
 
-red() = rgb(255,0,0);yellow() = rgb(255,255,0);white() = rgb(255,255,255);gray(h) = rgb(h,h,h)
-blue() = rgb(0,0,255);
 
+function rgb(r,g,b)
+    "\e[38;2;$(r);$(g);$(b)m"
+end
 
-  
+function red()
+    rgb(255,0,0)
+end
+
+function yellow()
+    rgb(255,255,0)
+end
+
+function white()
+    rgb(255,255,255)
+end
+
+function gray(h)
+    rgb(h,h,h)
+end
 
 
 function print_key(k)
@@ -53,7 +74,6 @@ function decode(c,q)
     end
     p
 end
-
 
 function self(q)
     n = size(q)[begin]
